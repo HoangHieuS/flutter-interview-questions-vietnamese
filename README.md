@@ -1,10 +1,13 @@
 # Những câu hỏi phỏng vấn Flutter Framework kèm câu trả lời
 
-Đây là một danh sách các câu hỏi phỏng vấn Flutter kèm câu trả lời của chúng
+Đây là một danh sách các câu hỏi phỏng vấn Flutter kèm câu trả lời của chúng.
 
 ### Ghi chú ###
 
-Những câu trả lời này được tổng hợp từ nhiều nguồn khác nhau như Github, Stackoverflow, Viblo,... dựa trên những câu hỏi từ tài khoản power19942. Nguồn: https://github.com/power19942/flutter-interview-questions
+Những câu trả lời này được tổng hợp từ nhiều nguồn khác nhau như Github, Stackoverflow, Viblo,... dựa trên những câu hỏi từ tài khoản power19942. Nguồn: https://github.com/power19942/flutter-interview-questions.
+
+Những câu hỏi này chỉ phù hợp để phỏng vấn ở mức độ `Intern` và `Fresher`.
+Nếu có gì sai sót trong các câu trả lời hay có ý kiến đóng góp nào để bổ sung câu hỏi, mọi người cứ thoải mái góp ý và bình luận. 
 
 ---
   Câu hỏi và trả lời về Flutter Framework
@@ -85,6 +88,71 @@ Mặt khác, `StatelessWidget` có các phương thức xây dựng và liên k�
 
 8. Tệp `pubspec.yaml` trong Dart là gì?
 
-Tệp pubspec quản lý nội dung (assets) và các thư viện phụ thuộc (dependencies) của ứng dụng Flutter.
+Đó là một tệp mà bạn có thể khai báo sử dụng tất cả các thư viện, plugin, phông chữ, hình ảnh,... của dự án Flutter của bản. Đó củng là nơi bạn cấu hình tên và mô tả về dự án của bạn. Tệp này quản lý nội dung dự án (assets) và thư viện hỗ trợ (dependencies) cho ứng dụng của bạn.
 
 ---
+
+9. Flutter nguyên bản (native) như thế nào?
+
+Flutter chỉ sử dụng canvas của nền tảng gốc để vẽ giao diện người dùng và tất cả các thành phần từ đầu. Tất cả các phần tử giao diện người dùng trông giống như phần tử gốc. Điều này chủ yếu làm giảm gánh nặng thời gian cho việc chuyển đổi qua một số ngôn ngữ sang ngôn ngữ gốc và tăng tốc thời gian hiển thị giao diện người dùng. Do đó, hiệu suất giao diện người dùng cao đáng kể.
+
+---
+
+10. `Navigator` và `Routes` trong Flutter là gì?
+
+`Route` là một abstraction của một màn hình ("screen", "page") của ứng dụng. Navigator là một widget chịu trách nhệm quản lý các route đó.
+
+Nhiệm vụ của `Navigator` là tạo một Widget để lưu trữ, duy trì một stack-based lịch sử các child widget. `Navigator` có thể push hoặc pop một route để giúp người dùng duy chuyển giữa các màn hình khác nhau
+
+---
+
+11. `PageRouter` là gì?
+
+Là một modal route cung cấp cái hiệu ứng chuyển trang tương thích với từng nền tảng khác nhau (android & ios).
+
+---
+
+12. Giải thích `async`, `await` và `Future`?
+
+`async` và `awai`t là những từ khóa cung cấp cho chúng ta cách khai báo chương trình bất đồng bộ.
+  + async - đặt trước thân một hàm để nó trở thành bất đồng bộ.
+  + await - chỉ sử dụng bên trong async để đánh dấu kết thúc việc bất đồng bộ.
+ 
+future là một thể hiện của `Future` class đại diện cho các hoạt dộng của lập trình bất đồng bộ. Có 2 trạng thái là: uncomplete hoặc completed
+  + Uncompleted: khi bạn gọi một hàm không đồng bộ mà nó trả về một future với trạng thái uncompleted thì Future này đang chờ cho các hoạt động không đồng bộ của hàm kết thúc hoặc trả về một error.
+  + Completed: nếu một hành động không đồng bộ thực hiện thành công: future có thể hoàn thành với một giá trị hoặc hoàn thành với một error.
+  
+---
+
+13. Làm cách nào để bạn cập nhật một listview có kiểu dữ liệu linh động (dynamically)?
+
+Bằng cách sử dụng setState để cập nhật item source của listview và xây dựng (rebuild) lại giao diện.
+
+---
+
+14. `Stream` là gì?
+
+Luồng (`Stream`) là một chuỗi các sự kiện không đồng bộ. Nó cung cấp một chuỗi dữ liệu không đồng bộ. Nó cũng giống như một đường ống mà khi đặt một số giá trị vào một đầu và nếu có một người nghe ở đầu kia, người đó sẽ nhận được giá trị đó. Có thể giữ nhiều người nghe trong một luồng và tất cả những người nghe đó sẽ nhận được cùng một giá trị khi được đưa vào đường dẫn.
+
+---
+
+15. `keys` trong Flutter là gì và khi nào nên sử dụng nó?
+
+  + Các Key trong Flutter được sử dụng làm code định danh cho Widget, Elements và SemanticsNodes. Chúng ta có thể sử dụng nó khi một widget mới cố gắng cập nhật một phần tử hiện có; sau đó khóa của nó phải giống với khóa widget hiện tại được liên kết với phần tử.
+  + Các khóa không được khác nhau giữa các widget trong cùng một gốc.
+  + Các lớp con của Key phải là GlobalKey hoặc LocalKey.
+  + Key rất hữu ích khi chúng ta cố gắng thao tác (chẳng hạn như thêm, xóa hoắc sắp xếp lại thứ tự) một tập hợp các widget cùng loại có trạng thái nào đó.
+
+---
+
+16. `GlobalKeys` là gì?
+
+GlobalKeys có hai cách sử dụng:
+
+  + Chúng cho phép các Widget thay đổi parents của chúng ở bất kỳ vị trí nào trong ứng dụng mà không bị mất state hoặc chúng có thể được sử dụng để truy cập dữ liệu để lấy thông tin của một Widget bất kỳ.
+  + Trong trường hợp thứ hai, bạn có thể cần kiểm tra mật khẩu; tuy nhiên, bạn không muốn chia sẻ status data với các widget khác nhau trong cây và bạn có thể sử dụng GlobalKey<FromState>, nó nắm giữ State của Form.
+
+Để hiểu thêm về `keys` và nên sử dụng thế nào trong quá trình tạo ứng dụng thì đọc thêm ở link sau: [Keys trong Flutter](https://200lab.io/blog/tim-hieu-keys-trong-flutter/)
+
+---
+
